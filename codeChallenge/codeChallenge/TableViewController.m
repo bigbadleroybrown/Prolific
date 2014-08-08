@@ -53,36 +53,6 @@
 
 -(void)loadBooks
 {
-    
-//    NSURL *json = [[NSURL alloc] initWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
-//    
-//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:json];
-//    
-//    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-//        
-//        NSMutableArray *tempBooks = [[NSMutableArray alloc] init];
-//        
-//        for (NSDictionary *dic in JSON) {
-//            Book *book = [[Book alloc] initWithDictionary:dic];
-//            [tempBooks addObject:book];
-//            
-//            NSLog(@"%@", JSON);
-//        }
-//        
-//        self.books = [[NSArray alloc] initWithArray:tempBooks];
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//           
-//            [self.tableView reloadData];
-//
-//        });
-//        
-//    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-//        NSLog(@"NSError: %@", error.localizedDescription);
-//    }];
-//    
-//    [operation start];
-    
     [APICLient loadBooksWithCompletion:^(NSArray *books) {  //always name the block
         
         self.books = books;
@@ -110,14 +80,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    DetailViewController *detail =[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-//    
-//    [self.navigationController pushViewController:detail animated:YES];
-    
-    //[detail loadFromBook:self.books[indexPath.row]];
-    
-    //[tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     DetailViewController *detailVC =  [mainSB instantiateViewControllerWithIdentifier:@"DetailViewController"];
@@ -137,6 +99,7 @@
     }
     
     cell.textLabel.text = [self.books[indexPath.row] title];
+    cell.detailTextLabel.text = [self.books[indexPath.row] author];
     
     return cell;
 }

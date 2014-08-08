@@ -11,6 +11,8 @@
 
 @interface DetailViewController : UIViewController
 
+@property (strong, nonatomic) Book *book;
+
 - (void)loadFromBook:(Book *)book;
 
 @end

@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "AFJSONRequestOperation.h"
 #import "DetailViewController.h"
+#import "APICLient.h"
 
 @interface TableViewController ()
 
@@ -31,6 +32,8 @@
     
     self.title =@"Books";
     self.books = [[NSMutableArray alloc] init];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     [self loadBooks];
     
@@ -51,28 +54,43 @@
 -(void)loadBooks
 {
     
-    NSURL *json = [[NSURL alloc] initWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+//    NSURL *json = [[NSURL alloc] initWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+//    
+//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:json];
+//    
+//    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+//        
+//        NSMutableArray *tempBooks = [[NSMutableArray alloc] init];
+//        
+//        for (NSDictionary *dic in JSON) {
+//            Book *book = [[Book alloc] initWithDictionary:dic];
+//            [tempBooks addObject:book];
+//            
+//            NSLog(@"%@", JSON);
+//        }
+//        
+//        self.books = [[NSArray alloc] initWithArray:tempBooks];
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//           
+//            [self.tableView reloadData];
+//
+//        });
+//        
+//    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+//        NSLog(@"NSError: %@", error.localizedDescription);
+//    }];
+//    
+//    [operation start];
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:json];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    [APICLient loadBooksWithCompletion:^(NSArray *books) {  //always name the block
         
-        NSMutableArray *tempBooks = [[NSMutableArray alloc] init];
+        self.books = books;
         
-        for (NSDictionary *dic in JSON) {
-            Book *book = [[Book alloc] initWithDictionary:dic];
-            [tempBooks addObject:book];
-        }
-        
-        self.books = [[NSArray alloc] initWithArray:tempBooks];
-        
-        [self.table reloadData];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"NSError: %@", error.localizedDescription);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
-    
-    [operation start];
-    
 }
 
 #pragma mark - Table view data source
@@ -91,13 +109,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailViewController *detail =[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     
-    [self.navigationController pushViewController:detail animated:YES];
+//    DetailViewController *detail =[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+//    
+//    [self.navigationController pushViewController:detail animated:YES];
     
-    [detail loadFromBook:self.books[indexPath.row]];
+    //[detail loadFromBook:self.books[indexPath.row]];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    //[tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DetailViewController *detailVC =  [mainSB instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    
+    detailVC.book = self.books[indexPath.row];
+    
+    [self presentViewController:detailVC animated:YES completion:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -114,6 +141,9 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50.0f;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

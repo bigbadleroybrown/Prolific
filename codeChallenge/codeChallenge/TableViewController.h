@@ -12,6 +12,6 @@
 @interface TableViewController : UITableViewController
 
 @property (nonatomic, strong)NSArray *books;
-@property (weak, nonatomic) IBOutlet UITableView *table;
+
 
 @end

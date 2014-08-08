@@ -47,31 +47,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return self.books.count;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailViewController *detail =[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:detail animated:YES];
-    
-    [detail loadFromBook:self.books[indexPath.row]];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
 
 -(void)loadBooks
 {
@@ -98,6 +73,31 @@
     
     [operation start];
     
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return self.books.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailViewController *detail =[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:detail animated:YES];
+    
+    [detail loadFromBook:self.books[indexPath.row]];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -12,10 +12,15 @@
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *author;
+@property (strong, nonatomic) NSString *publisher;
+@property (strong, nonatomic) NSString *categories;
 
 
 -(id)initWithTitle: (NSString *)aTitle
-            author: (NSString *)aAuthor;
+            author: (NSString *)aAuthor
+            publisher: (NSString *)aPublisher
+            categories: (NSString *)aCategory;
+
 
 -(id)initWithDictionary: (NSDictionary *)dic;
 

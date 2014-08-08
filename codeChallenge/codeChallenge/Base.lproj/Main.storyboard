@@ -43,7 +43,7 @@
                     <navigationItem key="navigationItem" id="nvf-9A-F8y">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="qlH-1h-rAz">
                             <connections>
-                                <segue destination="nDc-gJ-ceD" kind="presentation" id="Moi-JA-YC0"/>
+                                <segue destination="9Xi-O0-G2U" kind="presentation" id="Rj6-hF-wSD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,18 +63,68 @@
                     <view key="view" contentMode="scaleToFill" id="zks-rT-aa0">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52S-ES-qIr">
+                                <rect key="frame" x="20" y="95" width="440" height="38"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ9-Qf-6Qr">
+                                <rect key="frame" x="20" y="133" width="440" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Publisher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gZ-Oy-THS">
+                                <rect key="frame" x="20" y="171" width="440" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-3X-Mrx">
+                                <rect key="frame" x="20" y="209" width="440" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Checked Out:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfS-OJ-raT">
+                                <rect key="frame" x="20" y="247" width="440" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name @ Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxC-ZD-OPe">
+                                <rect key="frame" x="20" y="285" width="440" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="s2l-6t-0y8"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="Q5y-8J-6l3"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Q5y-8J-6l3">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="dSH-bZ-mWK">
+                            <connections>
+                                <segue destination="ksh-E4-3q4" kind="show" id="nmf-56-tyi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="vz6-kI-BF2"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="AuthorLabel" destination="MZ9-Qf-6Qr" id="kSv-F6-n1y"/>
+                        <outlet property="CategoriesLabel" destination="Odh-3X-Mrx" id="ZoI-I2-dy6"/>
+                        <outlet property="NameDateLabel" destination="TxC-ZD-OPe" id="nN6-GN-oUj"/>
+                        <outlet property="PublisherLabel" destination="2gZ-Oy-THS" id="nwT-K5-5zC"/>
+                        <outlet property="TitleLabel" destination="52S-ES-qIr" id="cDC-b4-lAY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK4-wg-Jeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="-191"/>
+            <point key="canvasLocation" x="2143" y="-615"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Noh-wz-Lbg">
@@ -97,6 +147,7 @@
         <!--Navigation Controller-->
         <scene sceneID="0Ag-Ik-kWn">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydt-JG-csW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nDc-gJ-ceD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rg6-ba-z9b">
@@ -108,9 +159,55 @@
                         <segue destination="nZs-56-X3J" kind="relationship" relationship="rootViewController" id="hLL-iQ-NkR"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydt-JG-csW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="-191"/>
+            <point key="canvasLocation" x="1439" y="-983"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qVl-cD-zGi">
+            <objects>
+                <viewController id="pmx-SE-3OJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n4Z-Qc-YSD"/>
+                        <viewControllerLayoutGuide type="bottom" id="guM-ZP-8Vr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M7D-o2-Na6">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="F46-Km-R2Y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="OAw-CH-JSf">
+                            <connections>
+                                <segue destination="ksh-E4-3q4" kind="show" id="8Df-qD-gr3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zqJ-0Q-LiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2143" y="275"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xz0-JC-Ngn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Xi-O0-G2U" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2zs-vH-V4s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pmx-SE-3OJ" kind="relationship" relationship="rootViewController" id="Qij-GS-t78"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4dH-P3-vQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1467" y="827"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nmf-56-tyi"/>
+    </inferredMetricsTieBreakers>
 </document>

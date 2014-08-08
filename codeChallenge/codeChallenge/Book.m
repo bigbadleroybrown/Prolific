@@ -10,19 +10,24 @@
 
 @implementation Book
 
--(id)initWithTitle:(NSString *)aTitle author:(NSString *)aAuthor {
+-(id)initWithTitle: (NSString *)aTitle
+            author: (NSString *)aAuthor
+         publisher: (NSString *)aPublisher
+        categories: (NSString *)aCategory;{
     self = [super init];
     
     if (self) {
         self.title = aTitle;
         self.author = aAuthor;
+        self.publisher = aPublisher;
+        self.categories = aCategory;
     }
     
     return self;
 }
 
 -(id)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithTitle:dic[@"title"] author:dic[@"author"]];
+    self = [self initWithTitle:dic[@"title"] author:dic[@"author"] publisher:dic[@"publisher"] categories:dic[@"categories"]];
     return self;
 }
 

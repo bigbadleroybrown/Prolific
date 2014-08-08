@@ -27,7 +27,20 @@
 {
     [super viewDidLoad];
     
+    self.TitleLabel.text = self.book.title;
+    self.AuthorLabel.text = self.book.author;
+    self.PublisherLabel.text = self.book.publisher;
+    self.CategoriesLabel.text = self.book.categories;
+
+    
+    
     // Do any additional setup after loading the view.
+}
+
+-(void)loadFromBook:(Book *)book
+{
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

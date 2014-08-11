@@ -8,7 +8,8 @@
 
 #import "AddBookViewController.h"
 
-@interface AddBookViewController ()
+@interface AddBookViewController () <UITextFieldDelegate>
+
 @property (retain, nonatomic) NSMutableData *receivedData;
 
 @property (weak, nonatomic) IBOutlet UITextField *BookTitleInput;
@@ -37,6 +38,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.BookTitleInput.delegate = self;
+    self.AuthorInput.delegate = self;
+    self.PublisherInput.delegate = self;
+    self.CategoriesInput.delegate = self;
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -56,6 +64,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 - (IBAction)SubmitPressed:(id)sender {
     

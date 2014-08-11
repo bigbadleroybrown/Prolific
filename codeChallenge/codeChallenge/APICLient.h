@@ -12,6 +12,7 @@
 
 
 +(void)loadBooksWithCompletion: (void(^)(NSArray*))completion;
++(void)deleteBooks;
 
 
 

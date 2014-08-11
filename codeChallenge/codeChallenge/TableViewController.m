@@ -35,6 +35,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    
     [self loadBooks];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -109,27 +111,74 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50.0f;
 }
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        
+//        
+//        
+//        // Delete the row from the data source
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//    }   
+//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+        //add code here to do what you want when you hit delete
+        
+//        NSString *urlAsString = @"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/";
+//        
+//        NSURL *url = [NSURL URLWithString:urlAsString];
+//        
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//        
+//        [request setTimeoutInterval:30.0f];
+//        [request setHTTPMethod:@"DELETE"];
+
+        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+        
+        //NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
+        
+        //NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        
+        //NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        [request setURL:url];
+        [request setHTTPMethod:@"DELETE"];
+        //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        //[request setHTTPBody:postData];
+        
+        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+        NSError *error;
+        NSURLResponse *response;
+        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSLog(@"urlData is: %@",urlData);
+        
+        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",data);
+        
+        
+        
+        [self.books removeObjectAtIndex:[indexPath row]];
+        
+        [tableView reloadData];
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.

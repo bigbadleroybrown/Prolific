@@ -11,7 +11,7 @@
 
 @interface TableViewController : UITableViewController
 
-@property (nonatomic, strong)NSArray *books;
+@property (nonatomic, strong)NSMutableArray *books;
 
 
 @end

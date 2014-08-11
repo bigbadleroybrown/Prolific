@@ -77,25 +77,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Publisher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gZ-Oy-THS">
-                                <rect key="frame" x="20" y="171" width="440" height="30"/>
+                                <rect key="frame" x="156" y="171" width="303" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-3X-Mrx">
-                                <rect key="frame" x="20" y="209" width="440" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Checked Out:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfS-OJ-raT">
-                                <rect key="frame" x="20" y="247" width="440" height="30"/>
+                                <rect key="frame" x="156" y="209" width="303" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name @ Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxC-ZD-OPe">
-                                <rect key="frame" x="20" y="285" width="440" height="30"/>
+                                <rect key="frame" x="20" y="271" width="303" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Publisher:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQh-nQ-ZL2">
+                                <rect key="frame" x="20" y="180" width="77" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbE-gc-ZZZ">
+                                <rect key="frame" x="20" y="213" width="88" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Checked Out:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYm-DC-bkW">
+                                <rect key="frame" x="20" y="242" width="144" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -106,14 +118,23 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Q5y-8J-6l3">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Back" id="dSH-bZ-mWK">
                             <connections>
-                                <segue destination="ksh-E4-3q4" kind="show" id="nmf-56-tyi"/>
+                                <segue destination="ksh-E4-3q4" kind="popoverPresentation" popoverAnchorBarButtonItem="dSH-bZ-mWK" id="cTU-hp-Lbz">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DTy-Xh-5bB">
+                            <rect key="frame" x="217" y="7" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="vz6-kI-BF2"/>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="AuthorLabel" destination="MZ9-Qf-6Qr" id="kSv-F6-n1y"/>
                         <outlet property="CategoriesLabel" destination="Odh-3X-Mrx" id="ZoI-I2-dy6"/>
@@ -124,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK4-wg-Jeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2143" y="-615"/>
+            <point key="canvasLocation" x="2131" y="-423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Noh-wz-Lbg">
@@ -144,28 +165,10 @@
             </objects>
             <point key="canvasLocation" x="107" y="49"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0Ag-Ik-kWn">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydt-JG-csW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nDc-gJ-ceD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rg6-ba-z9b">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nZs-56-X3J" kind="relationship" relationship="rootViewController" id="hLL-iQ-NkR"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="1439" y="-983"/>
-        </scene>
-        <!--View Controller-->
+        <!--Add Book View Controller-->
         <scene sceneID="qVl-cD-zGi">
             <objects>
-                <viewController id="pmx-SE-3OJ" sceneMemberID="viewController">
+                <viewController id="pmx-SE-3OJ" customClass="AddBookViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="n4Z-Qc-YSD"/>
                         <viewControllerLayoutGuide type="bottom" id="guM-ZP-8Vr"/>
@@ -173,6 +176,38 @@
                     <view key="view" contentMode="scaleToFill" id="M7D-o2-Na6">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Book Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ccw-x5-v2m">
+                                <rect key="frame" x="20" y="128" width="440" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publisher" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-sj-Oau">
+                                <rect key="frame" x="20" y="220" width="440" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Nh-wE-J9C">
+                                <rect key="frame" x="20" y="268" width="440" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="861-ol-RTz">
+                                <rect key="frame" x="217" y="306" width="49" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SubmitPressed:" destination="pmx-SE-3OJ" eventType="touchUpInside" id="nNw-be-cRK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfo-Ts-sKE">
+                                <rect key="frame" x="20" y="173" width="440" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -183,6 +218,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="AuthorInput" destination="wfo-Ts-sKE" id="Ha6-eA-Fid"/>
+                        <outlet property="BookTitleInput" destination="ccw-x5-v2m" id="HKk-UB-TrG"/>
+                        <outlet property="CategoriesInput" destination="6Nh-wE-J9C" id="t26-WP-UFQ"/>
+                        <outlet property="PublisherInput" destination="Vx1-sj-Oau" id="6bQ-iL-Wvq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqJ-0Q-LiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,8 +247,26 @@
             </objects>
             <point key="canvasLocation" x="1467" y="827"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kkl-AL-6Mq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aHP-TJ-QCV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b9r-d2-pjy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nZs-56-X3J" kind="relationship" relationship="rootViewController" id="KeF-Xh-cEa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dBH-vR-NPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373" y="-819"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nmf-56-tyi"/>
+        <segue reference="8Df-qD-gr3"/>
     </inferredMetricsTieBreakers>
 </document>

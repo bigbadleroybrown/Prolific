@@ -87,7 +87,9 @@
     detailVC.book = self.books[indexPath.row];
     
     [self presentViewController:detailVC animated:YES completion:nil];
+
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     

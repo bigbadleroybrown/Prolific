@@ -11,7 +11,14 @@
 #import "AFJSONRequestOperation.h"
 
 
+@interface APICLient ()
+
+
+@end
+
 @implementation APICLient
+
+
 
 
 +(void)loadBooksWithCompletion: (void(^)(NSArray*))completion
@@ -45,6 +52,37 @@
     
 }
 
+
++(void)addBooksWithCompletion: (void(^)(NSArray *))completion
+{
+ 
+    NSString *post = [NSString stringWithFormat:@"example=test&p=1&test=yourPostMessage&this=isNotReal"];
+    
+    NSData *data = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [data length]];
+    
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
+    
+    [request setURL:[NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"]];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    [request setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setHTTPBody:data];
+    
+    
+
+    
+    
+    
+    
+    
+    
+}
 
 
 @end

@@ -16,6 +16,7 @@
 		2ED2E28519945BC200B538F7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED2E28419945BC200B538F7 /* DetailViewController.m */; };
 		2ED2E28819945E6D00B538F7 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED2E28719945E6D00B538F7 /* TableViewController.m */; };
 		2ED2E28B1995168C00B538F7 /* APICLient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED2E28A1995168C00B538F7 /* APICLient.m */; };
+		2ED2E28E19991F5B00B538F7 /* AddBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED2E28D19991F5B00B538F7 /* AddBookViewController.m */; };
 		9B706D643092425A91DE7EAD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9741E5EDA39E4775BD1F25CF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		2ED2E28719945E6D00B538F7 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		2ED2E2891995168C00B538F7 /* APICLient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICLient.h; sourceTree = "<group>"; };
 		2ED2E28A1995168C00B538F7 /* APICLient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICLient.m; sourceTree = "<group>"; };
+		2ED2E28C19991F5B00B538F7 /* AddBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookViewController.h; sourceTree = "<group>"; };
+		2ED2E28D19991F5B00B538F7 /* AddBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookViewController.m; sourceTree = "<group>"; };
 		9741E5EDA39E4775BD1F25CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8D7713AC424A9099B0E53C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +126,8 @@
 				2ED2E28319945BC200B538F7 /* DetailViewController.h */,
 				2ED2E28419945BC200B538F7 /* DetailViewController.m */,
 				2ED2E25D19944F6700B538F7 /* Main.storyboard */,
+				2ED2E28C19991F5B00B538F7 /* AddBookViewController.h */,
+				2ED2E28D19991F5B00B538F7 /* AddBookViewController.m */,
 				2ED2E28619945E6D00B538F7 /* TableViewController.h */,
 				2ED2E28719945E6D00B538F7 /* TableViewController.m */,
 				2ED2E2891995168C00B538F7 /* APICLient.h */,
@@ -300,6 +305,7 @@
 				2ED2E27C19944F8A00B538F7 /* Book.m in Sources */,
 				2ED2E25919944F6700B538F7 /* AppDelegate.m in Sources */,
 				2ED2E25619944F6700B538F7 /* main.m in Sources */,
+				2ED2E28E19991F5B00B538F7 /* AddBookViewController.m in Sources */,
 				2ED2E28B1995168C00B538F7 /* APICLient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

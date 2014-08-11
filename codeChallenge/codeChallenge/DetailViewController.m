@@ -32,6 +32,9 @@
     self.PublisherLabel.text = self.book.publisher;
     self.CategoriesLabel.text = self.book.categories;
 
+    self.navigationController.toolbarHidden = NO;
+    
+    
     
     
     // Do any additional setup after loading the view.

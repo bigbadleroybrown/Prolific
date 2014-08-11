@@ -39,6 +39,7 @@
 {
     [super viewDidLoad];
     
+    self.title =@"Add Book";
     self.BookTitleInput.delegate = self;
     self.AuthorInput.delegate = self;
     self.PublisherInput.delegate = self;

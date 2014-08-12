@@ -106,6 +106,8 @@
     cell.textLabel.text = [self.books[indexPath.row] title];
     cell.detailTextLabel.text = [self.books[indexPath.row] author];
     
+    
+    
     return cell;
 }
 
@@ -135,37 +137,37 @@
 //        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 //    }   
 //}
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-
-        //add code here to do what you want when you hit delete
-
-
-        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
-       
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-        
-        [request setURL:url];
-        [request setHTTPMethod:@"DELETE"];
-        //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        //[request setHTTPBody:postData];
-        
-        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
-        NSError *error;
-        NSURLResponse *response;
-        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSLog(@"urlData is: %@",urlData);
-        
-        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",data);
-        
-        
-        
-        [self.books removeObjectAtIndex:[indexPath row]];
-        
-        [tableView reloadData];
-    }
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//
+//        //add code here to do what you want when you hit delete
+//
+//
+//        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+//       
+//        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+//        
+//        [request setURL:url];
+//        [request setHTTPMethod:@"DELETE"];
+//        //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//        //[request setHTTPBody:postData];
+//        
+//        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+//        NSError *error;
+//        NSURLResponse *response;
+//        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//        NSLog(@"urlData is: %@",urlData);
+//        
+//        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",data);
+//        
+//        
+//        
+//        [self.books removeObjectAtIndex:[indexPath row]];
+//        
+//        [tableView reloadData];
+//    }
+//}
 
 /*
 // Override to support rearranging the table view.

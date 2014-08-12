@@ -115,7 +115,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-zU-Eh9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="gfq-kK-TGi"/>
+                                    <navigationItem title="Title" id="gZw-rN-Jhf"/>
                                 </items>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>

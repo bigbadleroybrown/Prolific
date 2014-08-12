@@ -7,10 +7,15 @@
 //
 
 #import "DetailViewController.h"
+#import "Book.h"
 
 @interface DetailViewController ()
 
+
+@property (strong, nonatomic) UIActivityViewController *activityViewController;
+
 @end
+
 
 @implementation DetailViewController
 
@@ -32,19 +37,16 @@
     self.PublisherLabel.text = self.book.publisher;
     self.CategoriesLabel.text = self.book.categories;
     self.title = @"Detail";
+    
 
     self.navigationController.toolbarHidden = NO;
     
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction:)];
     
+    self.navigationItem.rightBarButtonItem = shareButton;
     
     
     // Do any additional setup after loading the view.
-}
-
--(void)loadFromBook:(Book *)book
-{
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +54,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(IBAction)shareAction:(id)sender
+{
+  
+    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.book.title, self.book.author, self.book.publisher, self.book.categories] applicationActivities:nil];
+    
+    [self presentViewController:self.activityViewController animated:YES completion:nil];
+    
+    
+}
+
+
+
+
+
 
 /*
 #pragma mark - Navigation

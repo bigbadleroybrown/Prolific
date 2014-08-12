@@ -20,6 +20,8 @@
 
 @property (strong, nonatomic) Book *book;
 
-- (void)loadFromBook:(Book *)book;
+@property (strong, nonatomic) NSMutableArray *sharedBooks;
+
+//- (void)loadFromBook:(Book *)book;
 
 @end

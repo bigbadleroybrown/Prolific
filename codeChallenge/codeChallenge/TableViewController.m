@@ -89,7 +89,7 @@
     
     detailVC.book = self.books[indexPath.row];
     
-    [self presentViewController:detailVC animated:YES completion:nil];
+    [self.navigationController pushViewController:detailVC animated:YES];
 
 }
 

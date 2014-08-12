@@ -31,6 +31,7 @@
     self.AuthorLabel.text = self.book.author;
     self.PublisherLabel.text = self.book.publisher;
     self.CategoriesLabel.text = self.book.categories;
+    self.title = @"Detail";
 
     self.navigationController.toolbarHidden = NO;
     

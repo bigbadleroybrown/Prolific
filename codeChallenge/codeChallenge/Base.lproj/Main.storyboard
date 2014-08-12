@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="EYh-la-Ggy" detailTextLabel="I0C-Wh-jzi" style="IBUITableViewCellStyleSubtitle" id="nu7-PC-ldX">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="EYh-la-Ggy" detailTextLabel="I0C-Wh-jzi" style="IBUITableViewCellStyleSubtitle" id="nu7-PC-ldX">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" tableViewCell="nu7-PC-ldX" id="sm7-17-AvA">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -50,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3YP-ga-TRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="49"/>
+            <point key="canvasLocation" x="843" y="-50.25"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="nno-4u-zSj">
@@ -112,29 +112,31 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-zU-Eh9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="gfq-kK-TGi"/>
+                                </items>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                </variation>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="kcV-zU-Eh9"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="kcV-zU-Eh9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Q5y-8J-6l3">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="dSH-bZ-mWK">
-                            <connections>
-                                <segue destination="ksh-E4-3q4" kind="popoverPresentation" popoverAnchorBarButtonItem="dSH-bZ-mWK" id="cTU-hp-Lbz">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DTy-Xh-5bB">
-                            <rect key="frame" x="217" y="7" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="vz6-kI-BF2"/>
-                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="AuthorLabel" destination="MZ9-Qf-6Qr" id="kSv-F6-n1y"/>
                         <outlet property="CategoriesLabel" destination="Odh-3X-Mrx" id="ZoI-I2-dy6"/>
@@ -145,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK4-wg-Jeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2131" y="-423"/>
+            <point key="canvasLocation" x="1561" y="-388.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Noh-wz-Lbg">
@@ -262,26 +264,8 @@
             </objects>
             <point key="canvasLocation" x="1467" y="827"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Kkl-AL-6Mq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aHP-TJ-QCV" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b9r-d2-pjy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nZs-56-X3J" kind="relationship" relationship="rootViewController" id="KeF-Xh-cEa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dBH-vR-NPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1373" y="-819"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cTU-hp-Lbz"/>
+        <segue reference="8Df-qD-gr3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,7 +7,7 @@
         <!--Table View Controller-->
         <scene sceneID="oFO-Un-McM">
             <objects>
-                <tableViewController id="ksh-E4-3q4" customClass="TableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="home" id="ksh-E4-3q4" customClass="TableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T0z-0C-h7W">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,13 +242,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="F46-Km-R2Y">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="OAw-CH-JSf">
-                            <connections>
-                                <segue destination="ksh-E4-3q4" kind="show" id="8Df-qD-gr3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="F46-Km-R2Y"/>
                     <connections>
                         <outlet property="AuthorInput" destination="wfo-Ts-sKE" id="Ha6-eA-Fid"/>
                         <outlet property="BookTitleInput" destination="ccw-x5-v2m" id="HKk-UB-TrG"/>
@@ -280,7 +274,4 @@
             <point key="canvasLocation" x="1467" y="827"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="8Df-qD-gr3"/>
-    </inferredMetricsTieBreakers>
 </document>

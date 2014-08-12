@@ -8,6 +8,7 @@
 
 #import "AddBookViewController.h"
 #import <TSMessages/TSMessage.h>
+#import "TableViewController.h"
 
 @interface AddBookViewController () <UITextFieldDelegate, UIActionSheetDelegate>
 
@@ -25,6 +26,7 @@
 
 
 - (IBAction)SubmitPressed:(id)sender;
+- (IBAction)doneTapped:(id)sender;
 
 
 @end
@@ -51,8 +53,12 @@
     self.CategoriesInput.delegate = self;
     
     [TSMessage setDefaultViewController:self];
-    self.wantsFullScreenLayout = YES;
+
     [self.navigationController.navigationBar setTranslucent:YES];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTapped:)];
+    
+    self.navigationItem.rightBarButtonItem = doneButton;
     
     
     // Do any additional setup after loading the view.
@@ -121,38 +127,45 @@
         [TSMessage showNotificationWithTitle:NSLocalizedString(@"Missing Fields", nil)
                                     subtitle:NSLocalizedString(@"Please fill out all the fields and try again.", nil)
                                         type:TSMessageNotificationTypeError];
-        
     }
+
+}
+
+- (IBAction)doneTapped:(id)sender
+{
     
+    if (([self.BookTitleInput.text length] >1 || [self.AuthorInput.text length] >1 || [self.PublisherInput.text length]>1 || [self.CategoriesInput.text length] >1)) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unsaved Changes"
+                                                        message:@"Confirm leaving with unsaved changes"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
     
-//    NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
-//    
-//    NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
-//    
-//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//    
-//    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
-//    
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-//    
-//    [request setURL:url];
-//    [request setHTTPMethod:@"POST"];
-//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//    [request setHTTPBody:postData];
-//    
-//    NSLog(@"request is: %@", [request allHTTPHeaderFields]);
-//    NSError *error;
-//    NSURLResponse *response;
-//    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//    NSLog(@"urlData is: %@",urlData);
-//    
-//    NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",data);
+    } else {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TableViewController *homeVC = [storyBoard instantiateViewControllerWithIdentifier:@"home"];
+        [self.navigationController pushViewController:homeVC animated:YES];
+
+    }
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        NSLog(@"pressed Cancel");
+    }
+    
+    else {
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        TableViewController *homeVC = [storyBoard instantiateViewControllerWithIdentifier:@"home"];
 
-
+        [self.navigationController pushViewController:homeVC animated:YES];
+    }
+}
 
 
 @end

@@ -7,8 +7,9 @@
 //
 
 #import "AddBookViewController.h"
+#import <TSMessages/TSMessage.h>
 
-@interface AddBookViewController () <UITextFieldDelegate>
+@interface AddBookViewController () <UITextFieldDelegate, UIActionSheetDelegate>
 
 @property (retain, nonatomic) NSMutableData *receivedData;
 
@@ -49,6 +50,10 @@
     self.PublisherInput.delegate = self;
     self.CategoriesInput.delegate = self;
     
+    [TSMessage setDefaultViewController:self];
+    self.wantsFullScreenLayout = YES;
+    [self.navigationController.navigationBar setTranslucent:YES];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -78,35 +83,71 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
     return YES;
 }
 
 
 - (IBAction)SubmitPressed:(id)sender {
     
-    NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+    if ([self.BookTitleInput.text length] >0 && [self.AuthorInput.text length] >0 && [self.PublisherInput.text length]>0 && [self.CategoriesInput.text length] > 0) {
+        
+        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+        
+        NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        [request setURL:url];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        
+        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+        NSError *error;
+        NSURLResponse *response;
+        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSLog(@"urlData is: %@",urlData);
+        
+        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",data);
     
-    NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
+    } else {
+        
+        [TSMessage showNotificationWithTitle:NSLocalizedString(@"Missing Fields", nil)
+                                    subtitle:NSLocalizedString(@"Please fill out all the fields and try again.", nil)
+                                        type:TSMessageNotificationTypeError];
+        
+    }
     
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-    
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:postData];
-    
-    NSLog(@"request is: %@", [request allHTTPHeaderFields]);
-    NSError *error;
-    NSURLResponse *response;
-    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSLog(@"urlData is: %@",urlData);
-    
-    NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",data);
+//    NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+//    
+//    NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
+//    
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//    
+//    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
+//    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+//    
+//    [request setURL:url];
+//    [request setHTTPMethod:@"POST"];
+//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//    [request setHTTPBody:postData];
+//    
+//    NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+//    NSError *error;
+//    NSURLResponse *response;
+//    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//    NSLog(@"urlData is: %@",urlData);
+//    
+//    NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",data);
     
 }
 

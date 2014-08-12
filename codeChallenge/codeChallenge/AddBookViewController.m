@@ -86,7 +86,7 @@
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
     

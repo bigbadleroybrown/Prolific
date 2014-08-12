@@ -10,6 +10,7 @@
 #import "AFJSONRequestOperation.h"
 #import "DetailViewController.h"
 #import "APICLient.h"
+#import "Book.h"
 
 @interface TableViewController ()
 

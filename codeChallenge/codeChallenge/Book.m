@@ -13,7 +13,8 @@
 -(id)initWithTitle: (NSString *)aTitle
             author: (NSString *)aAuthor
          publisher: (NSString *)aPublisher
-        categories: (NSString *)aCategory;{
+        categories: (NSString *)aCategory
+               url:(NSString *)aUrl;{
     self = [super init];
     
     if (self) {
@@ -21,13 +22,14 @@
         self.author = aAuthor;
         self.publisher = aPublisher;
         self.categories = aCategory;
+        self.url = aUrl;
     }
     
     return self;
 }
 
 -(id)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithTitle:dic[@"title"] author:dic[@"author"] publisher:dic[@"publisher"] categories:dic[@"categories"]];
+    self = [self initWithTitle:dic[@"title"] author:dic[@"author"] publisher:dic[@"publisher"] categories:dic[@"categories"] url:dic[@"url"]];
     return self;
 }
 

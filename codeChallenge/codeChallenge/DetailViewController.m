@@ -13,6 +13,10 @@
 
 @property (strong, nonatomic) UIActivityViewController *activityViewController;
 
+@property (strong, nonatomic) NSString *checkedoutBy;
+
+@property (strong, nonatomic) NSString *alertText;
+
 - (IBAction)checkoutPressed:(id)sender;
 
 
@@ -70,18 +74,58 @@
 
 - (IBAction)checkoutPressed:(id)sender
 {
-    
-    UIAlertView *alert = [[UIAlertView alloc]init];
-    [alert setDelegate:self];
-    [alert setTitle:@"Enter Name"];
-    [alert addButtonWithTitle:@"Cancel"];
-    [alert addButtonWithTitle:@"OK"];
-    
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert textFieldAtIndex:0].keyboardType = UIKeyboardTypeAlphabet;
-    
-    [alert show];
 
+    UIAlertView *alertView = [[UIAlertView alloc]init];
+    [alertView setDelegate:self];
+    [alertView setTitle:@"Enter Name"];
+    [alertView addButtonWithTitle:@"Cancel"];
+    [alertView addButtonWithTitle:@"OK"];
+    
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView textFieldAtIndex:0].keyboardType = UIKeyboardTypeAlphabet;
+    
+    [alertView show];
+
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex==0) {
+        NSLog(@"pressed cancel");
+    } else {
+        
+        UITextField *field = [alertView textFieldAtIndex:0];
+        
+        self.alertText = field.text;
+        
+        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+        
+        NSString *post = [[NSString alloc] initWithFormat:@"lastCheckedOutBy=%@", field.text];
+        
+        //NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        [request setURL:url];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        
+        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+        NSError *error;
+        NSURLResponse *response;
+        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSLog(@"urlData is: %@",urlData);
+        
+        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",data);
+    }
+    
 }
 
 

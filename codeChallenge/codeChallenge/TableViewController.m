@@ -15,6 +15,9 @@
 
 @interface TableViewController ()
 
+@property (strong, nonatomic) NSString *bookURL;
+@property (strong, nonatomic) Book *book;
+
 @end
 
 @implementation TableViewController
@@ -68,16 +71,23 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            
+            
         });
     }];
     
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
     });
+    
+    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
 {
     
     // Return the number of sections.
@@ -85,6 +95,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
 {
     // Return the number of rows in the section.
     return self.books.count;
@@ -102,7 +113,6 @@
 
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -114,8 +124,6 @@
     
     cell.textLabel.text = [self.books[indexPath.row] title];
     cell.detailTextLabel.text = [self.books[indexPath.row] author];
-    
-    
     
     return cell;
 }
@@ -132,7 +140,6 @@
 }
 
 
-
 // Override to support editing the table view.
 //- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -146,20 +153,25 @@
 //        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 //    }   
 //}
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 
         //add code here to do what you want when you hit delete
-
-
-        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
-       
+        
+        self.bookURL = [self.books[indexPath.row] booksURL];
+    
+        NSString *string = [NSString stringWithFormat:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e%@", self.bookURL];
+        
+        NSURL *url = [NSURL URLWithString:string];
+        
+        NSLog(@"%@", url);
+        
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
         
         [request setURL:url];
         [request setHTTPMethod:@"DELETE"];
-        //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        //[request setHTTPBody:postData];
         
         NSLog(@"request is: %@", [request allHTTPHeaderFields]);
         NSError *error;
@@ -169,8 +181,6 @@
         
         NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
         NSLog(@"%@",data);
-        
-        
         
         [self.books removeObjectAtIndex:[indexPath row]];
         

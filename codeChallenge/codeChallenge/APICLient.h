@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Book.h"
 
 @interface APICLient : NSObject
 

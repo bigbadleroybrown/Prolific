@@ -14,14 +14,14 @@
 @property (strong, nonatomic) NSString *author;
 @property (strong, nonatomic) NSString *publisher;
 @property (strong, nonatomic) NSString *categories;
-@property (strong, nonatomic) NSString *url;
+@property (strong, nonatomic) NSString *booksURL;
 
 
 -(id)initWithTitle: (NSString *)aTitle
             author: (NSString *)aAuthor
             publisher: (NSString *)aPublisher
             categories: (NSString *)aCategory
-               url: (NSString *)aUrl;
+               booksURL: (NSString *)aUrl;
 
 
 -(id)initWithDictionary: (NSDictionary *)dic;

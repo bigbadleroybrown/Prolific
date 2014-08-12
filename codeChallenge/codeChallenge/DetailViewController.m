@@ -92,7 +92,9 @@
 {
     
     if (buttonIndex==0) {
+    
         NSLog(@"pressed cancel");
+    
     } else {
         
         UITextField *field = [alertView textFieldAtIndex:0];

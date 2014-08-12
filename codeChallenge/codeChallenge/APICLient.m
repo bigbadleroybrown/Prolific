@@ -13,6 +13,7 @@
 
 @interface APICLient ()
 
+@property (strong, nonatomic) NSString *url;
 
 @end
 
@@ -24,6 +25,7 @@
 +(void)loadBooksWithCompletion: (void(^)(NSArray*))completion
 
 {
+    
     
     NSURL *json = [[NSURL alloc] initWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
     
@@ -52,11 +54,10 @@
     
 }
 
-+(void)deleteBooks
-
+-(void)getBookURL
 {
 
-
+    
     
 }
 

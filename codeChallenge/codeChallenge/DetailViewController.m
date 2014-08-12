@@ -11,7 +11,6 @@
 
 @interface DetailViewController ()
 
-
 @property (strong, nonatomic) UIActivityViewController *activityViewController;
 
 @end
@@ -58,11 +57,10 @@
 
 -(IBAction)shareAction:(id)sender
 {
-  
+
     self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.book.title, self.book.author, self.book.publisher, self.book.categories] applicationActivities:nil];
     
     [self presentViewController:self.activityViewController animated:YES completion:nil];
-    
     
 }
 

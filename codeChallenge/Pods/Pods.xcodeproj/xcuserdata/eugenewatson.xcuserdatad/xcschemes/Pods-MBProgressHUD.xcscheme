@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C0CBBF2D48A498E84F8CB4C"
-               BuildableName = "libPods-ISO8601DateFormatterValueTransformer.a"
-               BlueprintName = "Pods-ISO8601DateFormatterValueTransformer"
+               BlueprintIdentifier = "E1C73279A2094C5AA767D58B"
+               BuildableName = "libPods-MBProgressHUD.a"
+               BlueprintName = "Pods-MBProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

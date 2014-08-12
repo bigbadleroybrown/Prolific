@@ -20,7 +20,11 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *CategoriesInput;
 
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+
+
 - (IBAction)SubmitPressed:(id)sender;
+
 
 @end
 
@@ -105,4 +109,7 @@
     NSLog(@"%@",data);
     
 }
+
+
+
 @end

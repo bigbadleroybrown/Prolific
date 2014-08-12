@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "APICLient.h"
 #import "Book.h"
+#import <MBProgressHUD.h>
 
 @interface TableViewController ()
 
@@ -56,6 +57,11 @@
 
 -(void)loadBooks
 {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    
     [APICLient loadBooksWithCompletion:^(NSArray *books) {  //always name the block
         
         self.books = books;
@@ -64,6 +70,9 @@
             [self.tableView reloadData];
         });
     }];
+    
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    });
 }
 
 #pragma mark - Table view data source
@@ -137,37 +146,37 @@
 //        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 //    }   
 //}
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//
-//        //add code here to do what you want when you hit delete
-//
-//
-//        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
-//       
-//        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-//        
-//        [request setURL:url];
-//        [request setHTTPMethod:@"DELETE"];
-//        //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//        //[request setHTTPBody:postData];
-//        
-//        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
-//        NSError *error;
-//        NSURLResponse *response;
-//        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//        NSLog(@"urlData is: %@",urlData);
-//        
-//        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-//        NSLog(@"%@",data);
-//        
-//        
-//        
-//        [self.books removeObjectAtIndex:[indexPath row]];
-//        
-//        [tableView reloadData];
-//    }
-//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        //add code here to do what you want when you hit delete
+
+
+        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+       
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        [request setURL:url];
+        [request setHTTPMethod:@"DELETE"];
+        //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        //[request setHTTPBody:postData];
+        
+        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+        NSError *error;
+        NSURLResponse *response;
+        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSLog(@"urlData is: %@",urlData);
+        
+        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",data);
+        
+        
+        
+        [self.books removeObjectAtIndex:[indexPath row]];
+        
+        [tableView reloadData];
+    }
+}
 
 /*
 // Override to support rearranging the table view.

@@ -20,8 +20,5 @@
 
 @property (strong, nonatomic) Book *book;
 
-@property (strong, nonatomic) NSMutableArray *sharedBooks;
-
-//- (void)loadFromBook:(Book *)book;
 
 @end

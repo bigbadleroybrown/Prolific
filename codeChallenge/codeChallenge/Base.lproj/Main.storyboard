@@ -121,17 +121,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
                                 </variation>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Io7-uy-PSb">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="328" width="206" height="30"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="kcV-zU-Eh9"/>
+                                <exclude reference="Io7-uy-PSb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="kcV-zU-Eh9"/>
+                                <include reference="Io7-uy-PSb"/>
                             </mask>
                         </variation>
                     </view>
@@ -240,6 +251,7 @@
                         <outlet property="BookTitleInput" destination="ccw-x5-v2m" id="HKk-UB-TrG"/>
                         <outlet property="CategoriesInput" destination="6Nh-wE-J9C" id="t26-WP-UFQ"/>
                         <outlet property="PublisherInput" destination="Vx1-sj-Oau" id="6bQ-iL-Wvq"/>
+                        <outlet property="submitButton" destination="861-ol-RTz" id="Flp-A7-mka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqJ-0Q-LiS" userLabel="First Responder" sceneMemberID="firstResponder"/>

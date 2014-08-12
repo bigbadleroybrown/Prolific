@@ -13,7 +13,7 @@
 #import "Book.h"
 #import <MBProgressHUD.h>
 
-@interface TableViewController ()
+@interface TableViewController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSString *bookURL;
 @property (strong, nonatomic) Book *book;
@@ -42,7 +42,13 @@
     
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTapped:)];
+    
+    self.navigationItem.rightBarButtonItem = editButton;
+    
     [self loadBooks];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -184,6 +190,56 @@
         [tableView reloadData];
     }
 }
+
+- (IBAction)editTapped:(id)sender
+{
+    [self.tableView setEditing:YES animated:YES];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete All Books"
+                                                    message:@"Confirm delete all books"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self.tableView setEditing:NO animated:YES];
+        
+        NSLog(@"pressed Cancel");
+    }
+    
+    else {
+        
+        NSString *string = [NSString stringWithFormat:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/clean"];
+        
+        NSURL *url = [NSURL URLWithString:string];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+        
+        [request setURL:url];
+        [request setHTTPMethod:@"DELETE"];
+        
+        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+        NSError *error;
+        NSURLResponse *response;
+        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSLog(@"urlData is: %@",urlData);
+        
+        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",data);
+        
+        //[self.books removeObjectAtIndex:[indexPath row]];
+        
+        NSLog(@"You Cant read no mo");
+
+        [self.tableView reloadData];
+    }
+}
+
+
 
 /*
 // Override to support rearranging the table view.

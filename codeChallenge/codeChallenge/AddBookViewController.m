@@ -10,7 +10,7 @@
 #import <TSMessages/TSMessage.h>
 #import "TableViewController.h"
 
-@interface AddBookViewController () <UITextFieldDelegate, UIActionSheetDelegate>
+@interface AddBookViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (retain, nonatomic) NSMutableData *receivedData;
 
@@ -121,6 +121,10 @@
         
         NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
         NSLog(@"%@",data);
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TableViewController *homeVC = [storyBoard instantiateViewControllerWithIdentifier:@"home"];
+        [self.navigationController pushViewController:homeVC animated:YES];
     
     } else {
         
@@ -143,6 +147,7 @@
         [alert show];
     
     } else {
+        
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         TableViewController *homeVC = [storyBoard instantiateViewControllerWithIdentifier:@"home"];
         [self.navigationController pushViewController:homeVC animated:YES];

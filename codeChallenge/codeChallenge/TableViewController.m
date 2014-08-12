@@ -139,24 +139,10 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 
         //add code here to do what you want when you hit delete
-        
-//        NSString *urlAsString = @"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/";
-//        
-//        NSURL *url = [NSURL URLWithString:urlAsString];
-//        
-//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//        
-//        [request setTimeoutInterval:30.0f];
-//        [request setHTTPMethod:@"DELETE"];
+
 
         NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
-        
-        //NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
-        
-        //NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        
-        //NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-        
+       
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
         
         [request setURL:url];

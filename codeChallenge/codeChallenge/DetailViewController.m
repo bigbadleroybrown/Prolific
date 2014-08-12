@@ -9,9 +9,12 @@
 #import "DetailViewController.h"
 #import "Book.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIActivityViewController *activityViewController;
+
+- (IBAction)checkoutPressed:(id)sender;
+
 
 @end
 
@@ -65,7 +68,21 @@
 }
 
 
+- (IBAction)checkoutPressed:(id)sender
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc]init];
+    [alert setDelegate:self];
+    [alert setTitle:@"Enter Name"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:@"OK"];
+    
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert textFieldAtIndex:0].keyboardType = UIKeyboardTypeAlphabet;
+    
+    [alert show];
 
+}
 
 
 
@@ -79,5 +96,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

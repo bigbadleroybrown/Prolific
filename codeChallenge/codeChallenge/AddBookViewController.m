@@ -9,6 +9,10 @@
 #import "AddBookViewController.h"
 #import <TSMessages/TSMessage.h>
 #import "TableViewController.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "UIFont+FlatUI.h"
+
 
 @interface AddBookViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
@@ -22,7 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *CategoriesInput;
 
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet FUIButton *submitButton;
 
 
 - (IBAction)SubmitPressed:(id)sender;
@@ -59,6 +63,16 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTapped:)];
     
     self.navigationItem.rightBarButtonItem = doneButton;
+    
+    self.submitButton.buttonColor = [UIColor turquoiseColor];
+    self.submitButton.shadowColor = [UIColor greenSeaColor];
+    self.submitButton.shadowHeight = 3.0f;
+    self.submitButton.cornerRadius = 6.0f;
+    self.submitButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.submitButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.submitButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    self.view.backgroundColor = [UIColor cloudsColor];
     
     
     // Do any additional setup after loading the view.
@@ -171,6 +185,10 @@
         [self.navigationController pushViewController:homeVC animated:YES];
     }
 }
+
+
+
+
 
 
 @end

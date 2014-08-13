@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FlatUIKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HexColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,52 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>31624166D8274D04911E32C4</key>
+		<key>03CA37A5C68F44FA90306309</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46F098A736224D84A444CC7A</key>
+		<key>049FEF4ADA2C4E3097C89381</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>47D3F959DF73456DA368330D</key>
+		<key>41F2158BD1104235B72CD12F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49F6EA80600740CB81817201</key>
+		<key>46D3D344CCCA4D39A2E6BDA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4DD6F9DE5F7342B7A0001795</key>
+		<key>55E9BC9ADCE545F88E3DB291</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62CCD7F3989A4075AC9E4C57</key>
+		<key>5A1C6DFE268F48EF901DA146</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CACD64A37B94638B3829772</key>
+		<key>8B08314D78564B67BC84B609</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96EF289B8EBD4F7BACE4B446</key>
+		<key>96E2C5A3B66E420BAFD4633F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>989208AE914F44C988021722</key>
+		<key>E99EE54031054210B2980F5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BFADB4154E3645C3ACE733EE</key>
+		<key>E9EFB09EAA0A42FB95E680CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECEC828E677843DE977A1DD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

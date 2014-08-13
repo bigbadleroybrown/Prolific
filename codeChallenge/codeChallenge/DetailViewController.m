@@ -20,6 +20,8 @@
 
 @property (strong, nonatomic) NSString *alertText;
 
+
+
 - (IBAction)checkoutPressed:(id)sender;
 
 

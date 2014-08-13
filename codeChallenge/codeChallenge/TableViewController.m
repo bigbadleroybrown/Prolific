@@ -12,6 +12,8 @@
 #import "APICLient.h"
 #import "Book.h"
 #import <MBProgressHUD.h>
+#import "UITableViewCell+FlatUI.h"
+#import "UIColor+FlatUI.h"
 
 @interface TableViewController () <UIAlertViewDelegate>
 
@@ -45,6 +47,12 @@
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTapped:)];
     
     self.navigationItem.rightBarButtonItem = editButton;
+    
+    self.tableView.separatorColor = [UIColor  cloudsColor];
+    
+    self.tableView.backgroundColor = [UIColor cloudsColor];
+    
+    self.tableView.backgroundView = nil;
     
     [self loadBooks];
     
@@ -118,6 +126,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    UIRectCorner corners = 1;
+    if (tableView.style == UITableViewStyleGrouped) {
+        if ([tableView numberOfRowsInSection:indexPath.section] == 1) {
+            corners = UIRectCornerAllCorners;
+        } else if (indexPath.row == 0) {
+            corners = UIRectCornerTopLeft | UIRectCornerTopRight;
+        } else if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1) {
+            corners = UIRectCornerBottomLeft | UIRectCornerBottomRight;
+        }
+    }
+    
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
@@ -125,6 +144,8 @@
                 reuseIdentifier:@"cell"];
     }
     
+    [cell configureFlatCellWithColor:[UIColor greenSeaColor] selectedColor:[UIColor cloudsColor] roundingCorners:corners];
+
     cell.textLabel.text = [self.books[indexPath.row] title];
     cell.detailTextLabel.text = [self.books[indexPath.row] author];
     

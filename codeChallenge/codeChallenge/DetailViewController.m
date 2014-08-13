@@ -9,8 +9,11 @@
 #import "TableViewController.h"
 #import "DetailViewController.h"
 #import "Book.h"
+#import "FUIButton.h"
+#import "UIColor+FlatUI.h"
+#import "UIFont+FlatUI.h"
 
-@interface DetailViewController () <UIAlertViewDelegate>
+@interface DetailViewController () <UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSString *bookURL;
 
@@ -20,6 +23,7 @@
 
 @property (strong, nonatomic) NSString *alertText;
 
+@property (weak, nonatomic) IBOutlet FUIButton *checkoutButton;
 
 
 - (IBAction)checkoutPressed:(id)sender;
@@ -56,7 +60,18 @@
     
     self.navigationItem.rightBarButtonItem = shareButton;
     
+    self.view.backgroundColor = [UIColor cloudsColor];
     
+    self.checkoutButton.buttonColor = [UIColor turquoiseColor];
+    self.checkoutButton.shadowColor = [UIColor greenSeaColor];
+    self.checkoutButton.shadowHeight = 3.0f;
+    self.checkoutButton.cornerRadius = 6.0f;
+    self.checkoutButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.checkoutButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.checkoutButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    
+
     // Do any additional setup after loading the view.
 }
 
@@ -74,6 +89,7 @@
     
     [self presentViewController:self.activityViewController animated:YES completion:nil];
     
+    [[[[self parentViewController] parentViewController] parentViewController ]presentViewController:self.activityViewController animated:YES completion:nil];
 }
 
 
@@ -94,6 +110,7 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
 {
     
     if (buttonIndex==0) {
@@ -104,41 +121,52 @@
         
       UITextField *field = [alertView textFieldAtIndex:0];
         
-      self.alertText = field.text;
+        if (field.text.length > 1) {
+            
+            self.alertText = field.text;
+            
+            self.bookURL = self.book.booksURL;
+            
+            NSString *string = [NSString stringWithFormat:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e%@", self.bookURL];
+            
+            NSURL *url = [NSURL URLWithString:string];
+            
+            NSString *post = [[NSString alloc] initWithFormat:@"lastCheckedOutBy=%@", field.text];
+            
+            NSLog(@"%@", field.text);
+            
+            NSLog(@"%@", url);
+            
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            
+            NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+            
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            
+            [request setURL:url];
+            [request setHTTPMethod:@"PUT"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setHTTPBody:postData];
+            
+            NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+            NSError *error;
+            NSURLResponse *response;
+            NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            NSLog(@"urlData is: %@",urlData);
+            
+            NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",data);
+        }
         
-      self.bookURL = self.book.booksURL;
-        
-      NSString *string = [NSString stringWithFormat:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e%@", self.bookURL];
-        
-      NSURL *url = [NSURL URLWithString:string];
-        
-      NSString *post = [[NSString alloc] initWithFormat:@"lastCheckedOutBy=%@", field.text];
-        
-      NSLog(@"%@", field.text);
-        
-      NSLog(@"%@", url);
-        
-      NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-
-      NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
-        
-      NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-        
-      [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        
-      [request setURL:url];
-      [request setHTTPMethod:@"PUT"];
-      [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-      [request setHTTPBody:postData];
-        
-      NSLog(@"request is: %@", [request allHTTPHeaderFields]);
-      NSError *error;
-      NSURLResponse *response;
-      NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-      NSLog(@"urlData is: %@",urlData);
-        
-      NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-      NSLog(@"%@",data);
+        else {
+            
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"You must enter a name" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"OK", nil];
+            
+            [actionSheet showInView:self.view];
+            
+        }
     
     }
     

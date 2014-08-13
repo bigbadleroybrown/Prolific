@@ -6,10 +6,13 @@
 //
 //
 
+#import "TableViewController.h"
 #import "DetailViewController.h"
 #import "Book.h"
 
 @interface DetailViewController () <UIAlertViewDelegate>
+
+@property (strong, nonatomic) NSString *bookURL;
 
 @property (strong, nonatomic) UIActivityViewController *activityViewController;
 
@@ -97,35 +100,44 @@
     
     } else {
         
-        UITextField *field = [alertView textFieldAtIndex:0];
+      UITextField *field = [alertView textFieldAtIndex:0];
         
-        self.alertText = field.text;
+      self.alertText = field.text;
         
-        NSURL *url = [NSURL URLWithString:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e/books/"];
+      self.bookURL = self.book.booksURL;
         
-        NSString *post = [[NSString alloc] initWithFormat:@"lastCheckedOutBy=%@", field.text];
+      NSString *string = [NSString stringWithFormat:@"http://prolific-interview.herokuapp.com/53e3aac7cc8722000724397e%@", self.bookURL];
         
-        //NSString *post = [[NSString alloc] initWithFormat:@"author=%@&title=%@&categories=%@&publisher=%@", self.AuthorInput.text, self.BookTitleInput.text, self.CategoriesInput.text, self.PublisherInput.text];
+      NSURL *url = [NSURL URLWithString:string];
         
-        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+      NSString *post = [[NSString alloc] initWithFormat:@"lastCheckedOutBy=%@", field.text];
         
-        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
+      NSLog(@"%@", field.text);
         
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+      NSLog(@"%@", url);
         
-        [request setURL:url];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        [request setHTTPBody:postData];
+      NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+
+      NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]]; //%d
         
-        NSLog(@"request is: %@", [request allHTTPHeaderFields]);
-        NSError *error;
-        NSURLResponse *response;
-        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSLog(@"urlData is: %@",urlData);
+      NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
         
-        NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",data);
+      [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+      [request setURL:url];
+      [request setHTTPMethod:@"PUT"];
+      [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+      [request setHTTPBody:postData];
+        
+      NSLog(@"request is: %@", [request allHTTPHeaderFields]);
+      NSError *error;
+      NSURLResponse *response;
+      NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+      NSLog(@"urlData is: %@",urlData);
+        
+      NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+      NSLog(@"%@",data);
+    
     }
     
 }

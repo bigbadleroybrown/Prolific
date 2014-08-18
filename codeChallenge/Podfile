@@ -1,5 +1,7 @@
 platform :ios, '7.0'
+inhibit_all_warnings!
 pod 'RestKit', '~> 0.23'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'TSMessages'
 pod 'FlatUIKit'
+
